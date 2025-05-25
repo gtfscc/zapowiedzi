@@ -184,7 +184,19 @@
         }
     </style>
 </head>
-<body style="font-family: Arial;">
+<body style="font-family: Arial; ">
+
+<div id="login-screen" style="padding: 20px; text-align: center;">
+  <h2>🔐 Wpisz hasło, aby kontynuować</h2>
+  <input type="password" id="password-input" placeholder="Hasło" />
+ <button id="login-button">Zaloguj</button>
+
+  <div id="login-error" style="color: red;"></div>
+</div>
+<div id="main-app" style="display: none;">
+
+
+
     <h1>Zapowiedzi głosowe</h1>
     <a style="float: right; font-size: 8px;">Zapowiedzi pochodzą z warszawskich Tramwajów, Autobusów oraz Pociągów Metra.</a>
     <div class="square" style="text-align: center;">(BZ)</div>&nbsp; - Brak Zapowiedzi
@@ -3439,6 +3451,33 @@
         window.onresize = function() {
             checkOptionTextOverflow();
         };
+		
+		
+		  const hashedPassword = "42d514b81b2e5db36a5b23250bd0f90076d0a418aed7706f553db87be9dc0b7a";
+
+    async function checkPassword() {
+      const input = document.getElementById("password-input").value.trim();
+      const error = document.getElementById("login-error");
+
+      const hashBuffer = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(input));
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      const hashHex = hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
+
+      if (hashHex === hashedPassword) {
+        document.getElementById("login-screen").style.display = "none";
+        document.getElementById("main-app").style.display = "block";
+        initApp();
+      } else {
+        error.textContent = "❌ Błędne hasło!";
+      }
+    }
+
+    window.onload = () => {
+      document.getElementById("login-button").addEventListener("click", checkPassword);
+      document.getElementById("password-input").focus();
+      document.getElementById("start-announcements").addEventListener("click", startAnnouncements);
+      document.getElementById("skip-announcement").addEventListener("click", skipAnnouncement);
+    };
     </script>
 </body>
 </html>
