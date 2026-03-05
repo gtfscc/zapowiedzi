@@ -79,15 +79,15 @@
         #playlist li {
             padding: 5px;
             margin: 5px 0;
-            background-color: #f0f0f0;
-            border: 1px solid #ccc;
+            background-color: #3C3C3C;
+            border: 1px solid #666;
             border-radius: 4px;
             white-space: nowrap;
             overflow: hidden;
             position: relative;
             height: 30px;
             line-height: 30px;
-            color: black;
+            color: white;
             font-weight: 700;
         }
         #playlist li span {
@@ -99,6 +99,7 @@
         #playlist li button {
             float: right;
             margin-left: 10px;
+			
         }
         h1 {
             font-family: Arial;
@@ -207,8 +208,8 @@
                 <div class="select-container">
                     <div class="select-wrapper">
                         <input type="text" id="searchBox1" placeholder="Szukaj przystanku..." oninput="filterSounds('soundSelect1')">
-                        <br><p>Wybrany przystanek:</p><br>
-                        <span id="selectedSound1" class="selected-sound str2"></span>
+                        <br><p style="margin-bottom: 1px;">Wybrany przystanek:</p>
+                        <span id="selectedSound1" class="selected-sound str2" style="margin-bottom: 15px;"></span>
                         <br><a onclick="addSound('soundSelect1')" class="str1">Dodaj do listy</a>
                         <select id="soundSelect1" size="3075" onchange="selectSound(event, 'soundSelect1')">
 <option class="str3" value="1. Praskiego Pułku.mp3">2293 - 1.PRASKIEGO PUŁKU</option>
@@ -4355,6 +4356,7 @@
     </script>
 </body>
 </html>
+
 
 
 
