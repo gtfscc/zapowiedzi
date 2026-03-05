@@ -104,9 +104,7 @@
         h1 {
             font-family: Arial;
             text-align: center;
-            color: white;
-            border-bottom: solid 10px red;
-            border-top: solid 10px red;
+            color: white;	
         }
         .str1 {
             color: white;
@@ -133,6 +131,7 @@
         .str3 {
             font-size: 15px;
             font-weight: 900;
+			background-color: #2e2e2e;
 			color: white;
             text-decoration: none;
         }
@@ -167,6 +166,8 @@
             font-size: 15px;
             font-weight: 900;
             text-decoration: none;
+			background-color: #2e2e2e;
+			color: white;
         }
         .str4:hover {
             display: inline-block;
@@ -185,6 +186,9 @@
             background-color: #7fb2d8ff;
             float: left;
         }
+		p {
+			color: white;
+		}
     </style>
 </head>
 <body style="font-family: Arial; ">
@@ -194,16 +198,16 @@
 
     <h1>Zapowiedzi głosowe</h1>
     <a style="float: right; font-size: 8px;">Zapowiedzi pochodzą z warszawskich Tramwajów, Autobusów oraz Pociągów Metra.</a>
-    <div class="square" style="text-align: center;">(BZ)</div>&nbsp; - Brak Zapowiedzi
+    <div class="square" style="text-align: center;">(BZ)</div><p>&nbsp; - Brak Zapowiedzi</p>
     <p style="margin-block-start: 4px; margin-block-end: 4px;">
-    <div class="square1" style="text-align: center;">(M)</div>&nbsp; - Stacja Metra<br>
+    <div class="square1" style="text-align: center;">(M)</div><p>&nbsp; - Stacja Metra</p><br>
     <table>
         <tr>
             <td style="width: 850px;">
                 <div class="select-container">
                     <div class="select-wrapper">
                         <input type="text" id="searchBox1" placeholder="Szukaj przystanku..." oninput="filterSounds('soundSelect1')">
-                        <br>Wybrany przystanek:<br>
+                        <br><p>Wybrany przystanek:</p><br>
                         <span id="selectedSound1" class="selected-sound str2"></span>
                         <br><a onclick="addSound('soundSelect1')" class="str1">Dodaj do listy</a>
                         <select id="soundSelect1" size="3075" onchange="selectSound(event, 'soundSelect1')">
@@ -4351,6 +4355,7 @@
     </script>
 </body>
 </html>
+
 
 
 
