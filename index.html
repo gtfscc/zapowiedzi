@@ -185,15 +185,7 @@
     </style>
 </head>
 <body style="font-family: Arial; ">
-
-<div id="login-screen" style="padding: 20px; text-align: center;">
-  <h2>🔐 Wpisz hasło, aby kontynuować</h2>
-  <input type="password" id="password-input" placeholder="Hasło" />
- <button id="login-button">Zaloguj</button>
-
-  <div id="login-error" style="color: red;"></div>
-</div>
-<div id="main-app" style="display: none;">
+<div id="main-app">
 
 
 
@@ -4348,33 +4340,13 @@
             checkOptionTextOverflow();
         };
 		
-		
-		  const hashedPassword = "704ec6f961ceb4f6b4491a2f8ddbb90cc46debd04e79e581e8e682efc5f27ad7";
-
-    async function checkPassword() {
-      const input = document.getElementById("password-input").value.trim();
-      const error = document.getElementById("login-error");
-
-      const hashBuffer = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(input));
-      const hashArray = Array.from(new Uint8Array(hashBuffer));
-      const hashHex = hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
-
-      if (hashHex === hashedPassword) {
-        document.getElementById("login-screen").style.display = "none";
-        document.getElementById("main-app").style.display = "block";
-        initApp();
-      } else {
-        error.textContent = "❌ Błędne hasło!";
-      }
-    }
 
     window.onload = () => {
-      document.getElementById("login-button").addEventListener("click", checkPassword);
-      document.getElementById("password-input").focus();
       document.getElementById("start-announcements").addEventListener("click", startAnnouncements);
       document.getElementById("skip-announcement").addEventListener("click", skipAnnouncement);
     };
     </script>
 </body>
 </html>
+
 
